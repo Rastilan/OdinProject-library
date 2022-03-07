@@ -10,8 +10,12 @@ function Book(author, title, numOfPages, read){
 }
 
 function addBookToLibrary(){
+  
   let newBook = new Book(newBookForm.author.value, newBookForm.title.value, newBookForm.numOfPages.value, newBookForm.read.checked);
-    myLibrary.push(newBook);
+  if(newBook.value == "" || newBook.author == "" || newBook.title == "" || newBook.numOfPages == ""){
+    return;
+  }
+  myLibrary.push(newBook);
     createBookDisplay();
     
 }
@@ -23,7 +27,7 @@ function createBookDisplay(){
 
 
   const newContent = document.createTextNode("Book Name: " + myLibrary[i].title + ", Book Author: " + myLibrary[i].author + ", Numer of pages: " + myLibrary[i].numOfPages + ", Read: " + myLibrary[i].read);
-  const newButtonText = document.createTextNode("Button " + i);
+  const newButtonText = document.createTextNode("Remove Book");
   const newReadButtonText = document.createTextNode("Read");
   // add the text node to the newly created div
   newDiv.appendChild(newContent);
